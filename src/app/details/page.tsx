@@ -149,13 +149,17 @@ export default function DetailsPage() {
           <div className={styles.cardText}>
             <h2 className={`script ${styles.giftsTitle}`}>Gifts</h2>
             <p className={styles.giftsLine}>Your presence is the greatest gift of all.</p>
-            <p className={styles.giftsLine}>
-              If you wish to celebrate us further, our registry is linked below.
-            </p>
-            <div className="rule" />
-            <a className={`caps ${styles.registry}`} href={LINKS.registry}>
-              View our registry
-            </a>
+            {LINKS.registry !== "#" && (
+              <>
+                <p className={styles.giftsLine}>
+                  If you wish to celebrate us further, our registry is linked below.
+                </p>
+                <div className="rule" />
+                <a className={`caps ${styles.registry}`} href={LINKS.registry}>
+                  View our registry
+                </a>
+              </>
+            )}
           </div>
         </div>
       </section>

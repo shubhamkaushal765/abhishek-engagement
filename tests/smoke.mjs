@@ -166,12 +166,25 @@ async function checkFlows(browser, origin) {
   // RSVP submit.
   {
     const { context, page } = await newPage();
-    await step("flow rsvp", "fill and submit shows thank you", async () => {
+    await context.route("https://docs.google.com/**", (r) => r.fulfill({ status: 200, body: "" }));
+    await step("flow rsvp", "whitespace-only name is blocked by native validation", async () => {
+      await page.goto(url("rsvp/"), { waitUntil: "load" });
+      await page.locator("#rsvp-name").fill("   ");
+      await page.getByLabel("Accepts with pleasure").check();
+      await page.getByRole("button", { name: /submit/i }).click();
+      await page.waitForTimeout(400);
+      if ((await page.locator("[role=status]").count()) !== 0) throw new Error("status shown for blank name");
+      const bad = await page.locator("#rsvp-name").evaluate((el) => el.validity.patternMismatch);
+      if (bad !== true) throw new Error("patternMismatch is not true");
+    });
+    await step("flow rsvp", "fill and submit shows thank you or closed notice", async () => {
       await page.goto(url("rsvp/"), { waitUntil: "load" });
       await page.getByLabel(/your full name/i).fill("Test Guest");
       await page.getByLabel("Accepts with pleasure").check();
       await page.getByRole("button", { name: /submit/i }).click();
-      await page.getByText(/thank you/i).first().waitFor({ timeout: 6000 });
+      await page.locator("[role=status]").waitFor({ timeout: 6000 });
+      const t = (await page.locator("[role=status]").innerText()).toLowerCase();
+      if (!t.includes("thank you") && !t.includes("rsvp isn’t open yet")) throw new Error(`unexpected status: ${t}`);
     });
     await step("flow rsvp", "GO BACK goes to /invitation/", async () => {
       await page.goto(url("rsvp/"), { waitUntil: "load" });

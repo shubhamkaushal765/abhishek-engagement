@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { GOOGLE_FORM } from "@/lib/site";
+import { GOOGLE_FORM, PHONES } from "@/lib/site";
 import { submitRsvp } from "@/lib/rsvp";
 import styles from "./rsvp.module.css";
 
-type Status = "idle" | "sending" | "done" | "error";
+type Status = "idle" | "sending" | "done" | "closed" | "error";
 
 export default function RsvpForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -19,7 +19,7 @@ export default function RsvpForm() {
     setAttending(choice);
     setStatus("sending");
     try {
-      await submitRsvp(
+      const result = await submitRsvp(
         {
           name: text("name"),
           contact: text("contact"),
@@ -29,10 +29,27 @@ export default function RsvpForm() {
         },
         GOOGLE_FORM,
       );
-      setStatus("done");
+      setStatus(result === "skipped" ? "closed" : "done");
     } catch {
       setStatus("error");
     }
+  }
+
+  if (status === "closed") {
+    return (
+      <div className={styles.done} role="status">
+        <h1 className={styles.title}>Online RSVP isn’t open yet.</h1>
+        <p className={styles.doneText}>
+          Please let us know by phone:{" "}
+          {PHONES.map((p, i) => (
+            <span key={p.tel}>
+              {i > 0 && " / "}
+              <a href={`tel:${p.tel}`}>{p.display}</a>
+            </span>
+          ))}
+        </p>
+      </div>
+    );
   }
 
   if (status === "done") {
@@ -54,7 +71,7 @@ export default function RsvpForm() {
 
       <div className={styles.field}>
         <label htmlFor="rsvp-name" className={styles.label}>Your Full Name</label>
-        <input id="rsvp-name" name="name" type="text" required autoComplete="name" className={styles.input} />
+        <input id="rsvp-name" name="name" type="text" required pattern=".*\S.*" title="Please enter your name" autoComplete="name" className={styles.input} />
       </div>
       <div className={styles.field}>
         <label htmlFor="rsvp-contact" className={styles.label}>Contact</label>
