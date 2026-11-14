@@ -1,0 +1,112 @@
+:root {
+  --cream: #F6F0E6;
+  --sand: #EFE3D4;
+  --burgundy: #6E1F2B;
+  --wine: #4A1520;
+  --olive: #4F5D40;
+  --mist: #DBC6C1;
+  --blush: #D9A7A0;
+  --navy: #1F2A3A;
+  --ink: #0F1015;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--burgundy);
+  font-family: var(--font-serif), serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p, ol, ul, figure {
+  margin: 0;
+}
+
+ol, ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+.script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.names {
+  font-family: var(--font-names), cursive;
+  font-weight: 400;
+}
+
+.caps {
+  font-family: var(--font-caps), serif;
+  text-transform: uppercase;
+}
+
+.serif {
+  font-family: var(--font-serif), serif;
+}
+
+.rule {
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: currentColor;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--font-caps), serif;
+  font-size: 22.67px;
+  letter-spacing: 5.67px;
+  padding: 10px 32px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.pill:hover {
+  transform: scale(1.03);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

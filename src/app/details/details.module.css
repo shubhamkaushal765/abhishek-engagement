@@ -1,0 +1,423 @@
+.page {
+  background: var(--cream);
+  color: var(--burgundy);
+  text-align: center;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.hero {
+  position: relative;
+  height: clamp(180px, 23vw, 328px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero .cover {
+  object-position: center 40%;
+}
+
+.heroTitle {
+  position: relative;
+  color: var(--cream);
+  font-size: clamp(44px, 6vw, 66.67px);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.h2 {
+  color: var(--burgundy);
+  font-size: 46.67px;
+}
+
+.dateSection {
+  padding: 88px 16px 56px;
+}
+
+.dateSection .h2 {
+  margin-bottom: 40px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--wine);
+  margin-bottom: 10px;
+}
+
+.dateText {
+  font-style: italic;
+  font-size: 32px;
+  color: var(--burgundy);
+}
+
+.ceremonyText {
+  font-style: italic;
+  font-size: 26.67px;
+  line-height: 1.35;
+  max-width: 330px;
+  margin: 0 auto;
+  color: var(--burgundy);
+}
+
+.venueFrame {
+  position: relative;
+  width: min(400px, 80vw);
+  aspect-ratio: 400 / 600;
+  margin: 40px auto 0;
+}
+
+.venuePhoto {
+  position: absolute;
+  left: 14.5%;
+  top: 25%;
+  width: 70%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 533 / 800;
+}
+
+.venueOval {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.venueBow {
+  position: absolute;
+  left: 11%;
+  top: -4%;
+  width: 78%;
+  height: 22%;
+  object-fit: fill;
+  z-index: 3;
+}
+
+.timeline {
+  padding: 215px 16px 40px;
+}
+
+.timelineList {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.timelineIcon {
+  height: auto;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.time {
+  font-size: 22.67px;
+  font-weight: 700;
+  letter-spacing: 5.67px;
+  margin-top: 24px;
+  color: var(--burgundy);
+}
+
+.timeLabel {
+  font-size: 28px;
+  margin-top: 14px;
+  color: var(--burgundy);
+}
+
+.venueSection {
+  padding: 72px 16px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.venueIntro {
+  font-size: 29.33px;
+  line-height: 1.05;
+  max-width: 640px;
+  margin: 28px 0 36px;
+  color: var(--burgundy);
+}
+
+.key {
+  width: min(320px, 80vw);
+  height: auto;
+  max-width: none;
+  margin-bottom: 32px;
+}
+
+.venueName {
+  font-size: 21.33px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--burgundy);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  margin: 12px 0 24px;
+  color: var(--burgundy);
+}
+
+.mapPin {
+  width: 119px;
+  height: auto;
+  margin: 48px 0 24px;
+}
+
+.gallery {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 96px;
+}
+
+.galleryEntry {
+  flex: 414 1 0;
+  min-width: 0;
+}
+
+.galleryBallroom {
+  flex: 733 1 0;
+  min-width: 0;
+}
+
+.galleryEntry img,
+.galleryBallroom img {
+  width: 100%;
+  height: auto;
+}
+
+.gifts {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 70px;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  width: min(525px, 92vw);
+  container-type: inline-size;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.cardText {
+  position: absolute;
+  top: 26%;
+  left: 15%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--burgundy);
+}
+
+.giftsTitle {
+  font-size: calc(80 / 548 * 100cqw);
+  line-height: 1;
+  margin-bottom: calc(14 / 548 * 100cqw);
+}
+
+.giftsLine {
+  font-weight: 700;
+  font-size: calc(24 / 548 * 100cqw);
+  line-height: 1.1;
+  margin-bottom: calc(18 / 548 * 100cqw);
+}
+
+.cardText :global(.rule) {
+  margin: calc(4 / 548 * 100cqw) 0 calc(14 / 548 * 100cqw);
+}
+
+.registry {
+  font-size: calc(20 / 548 * 100cqw);
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: var(--burgundy);
+}
+
+.other {
+  padding: 64px 16px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bowtie {
+  width: min(300px, 70vw);
+  height: auto;
+  margin: 24px 0 20px;
+}
+
+.subhead {
+  font-size: 22.67px;
+  font-weight: 700;
+  letter-spacing: 5.67px;
+  color: var(--burgundy);
+}
+
+.otherText {
+  font-size: 26.67px;
+  line-height: 0.95;
+  max-width: 340px;
+  margin-top: 20px;
+  color: var(--burgundy);
+}
+
+.swatches {
+  display: flex;
+  gap: 19px;
+  margin: 20px 0 28px;
+}
+
+.swatch {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.swatchColor {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+}
+
+.swatchRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rose {
+  width: 160px;
+  height: auto;
+  margin-bottom: 0;
+}
+
+.horse {
+  width: min(250px, 70vw);
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.closing {
+  background: var(--burgundy);
+  color: var(--cream);
+  padding: 32px 16px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cameo {
+  position: relative;
+  width: min(450px, 80vw);
+  container-type: inline-size;
+  margin-bottom: 8px;
+}
+
+.cameo img {
+  width: 100%;
+  height: auto;
+}
+
+.monogram {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 57%;
+  font-size: calc(31.68 / 450 * 100cqw);
+  color: var(--wine);
+  opacity: 0.6;
+  line-height: 1.2;
+}
+
+.questions {
+  font-size: 22.67px;
+}
+
+.phones {
+  font-size: 29.33px;
+  margin-top: 4px;
+}
+
+.phones a {
+  text-decoration: none;
+}
+
+.invitedBy {
+  font-size: 21.33px;
+  letter-spacing: 6.4px;
+  margin-top: 36px;
+}
+
+.hosts {
+  font-size: clamp(22px, 5.5vw, 33.8px);
+  margin-top: 20px;
+}
+
+.family {
+  font-size: clamp(24px, 6vw, 34.67px);
+  letter-spacing: 8.67px;
+  color: var(--sand);
+  margin-top: 20px;
+}
+
+.goBack {
+  margin-top: 48px;
+}
+
+@media (max-width: 700px) {
+  .gallery {
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 64px;
+  }
+  .galleryEntry,
+  .galleryBallroom {
+    flex: none;
+    width: 100%;
+  }
+  .venueIntro {
+    font-size: 24px;
+  }
+  .timeline {
+    padding-top: 90px;
+  }
+  .questions {
+    font-size: 19px;
+  }
+  .phones {
+    font-size: 24px;
+  }
+  .invitedBy {
+    font-size: 17px;
+    letter-spacing: 4px;
+  }
+  .hosts {
+    font-size: 21px;
+  }
+  .venueName {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+}
