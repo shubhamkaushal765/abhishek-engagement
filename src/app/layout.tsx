@@ -4,8 +4,8 @@ import { COUPLE } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: COUPLE, template: "%s | Abhishek & Sweta" },
-  description: "Join us for the engagement of Abhishek & Sweta, 10 December 2026, Varanasi.",
+  title: { default: COUPLE, template: "%s | Sweta & Abhishek" },
+  description: "Join us for the engagement of Sweta & Abhishek, 10 December 2026, Varanasi.",
 };
 
 export const viewport: Viewport = {

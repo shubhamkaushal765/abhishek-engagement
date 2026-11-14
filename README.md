@@ -1,4 +1,4 @@
-# Abhishek & Sweta: engagement invitation
+# Sweta & Abhishek: engagement invitation
 
 A static Next.js site (landing envelope, invitation, RSVP, details) exported to GitHub Pages.
 
