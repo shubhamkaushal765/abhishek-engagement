@@ -14,6 +14,12 @@ const CONFIGURED: GoogleFormConfig = {
   attendingLabels: GOOGLE_FORM.attendingLabels,
 };
 
+const PLACEHOLDER: GoogleFormConfig = {
+  actionUrl: "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse",
+  entries: { name: "entry.XXXX_NAME", contact: "entry.XXXX_CONTACT", email: "entry.XXXX_EMAIL", attending: "entry.XXXX_ATTENDING", message: "entry.XXXX_MESSAGE" },
+  attendingLabels: GOOGLE_FORM.attendingLabels,
+};
+
 const ANSWERS: RsvpAnswers = {
   name: "  Asha Rao ",
   contact: " 9999999999  ",
@@ -28,7 +34,7 @@ afterEach(() => {
 
 describe("isFormConfigured", () => {
   it("is false for the placeholder config", () => {
-    expect(isFormConfigured(GOOGLE_FORM)).toBe(false);
+    expect(isFormConfigured(PLACEHOLDER)).toBe(false);
   });
 
   it("is true for a real-looking url and entry ids", () => {
@@ -38,6 +44,14 @@ describe("isFormConfigured", () => {
   it("is false when one entry is still a placeholder", () => {
     const form = { ...CONFIGURED, entries: { ...CONFIGURED.entries, email: "entry.XXXX_EMAIL" } };
     expect(isFormConfigured(form)).toBe(false);
+  });
+});
+
+describe("site RSVP config", () => {
+  it("is configured with plain field names for the Apps Script", () => {
+    expect(isFormConfigured(GOOGLE_FORM)).toBe(true);
+    expect(GOOGLE_FORM.actionUrl).toMatch(/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/);
+    expect(Object.values(GOOGLE_FORM.entries).sort()).toEqual(["attending", "contact", "email", "message", "name"]);
   });
 });
 
@@ -72,7 +86,7 @@ describe("submitRsvp", () => {
   it("skips and warns when the form is a placeholder", async () => {
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
     const fetchMock = vi.fn();
-    const result = await submitRsvp(ANSWERS, GOOGLE_FORM, fetchMock as unknown as typeof fetch);
+    const result = await submitRsvp(ANSWERS, PLACEHOLDER, fetchMock as unknown as typeof fetch);
     expect(result).toBe("skipped");
     expect(fetchMock).not.toHaveBeenCalled();
     expect(warn).toHaveBeenCalled();
