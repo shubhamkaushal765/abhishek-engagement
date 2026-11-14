@@ -1,6 +1,6 @@
 export const ROUTES = { home: "/", invitation: "/invitation/", rsvp: "/rsvp/", details: "/details/" } as const;
-export const COUPLE = "Abhishek & Sweta";
-export const MONOGRAM = "A&S";
+export const COUPLE = "Sweta & Abhishek";
+export const MONOGRAM = "S&A";
 export const EVENT = {
   startIso: "2026-12-10T00:00:00+05:30",
   dateDots: "10.12.2026",
@@ -24,8 +24,8 @@ export const TIMELINE: TimelineItem[] = [
   { time: "5:45 PM", label: "Photos", icon: "camera" },
   { time: "8:00 PM", label: "Farewell", icon: "car" },
 ];
-export const PHONES = [ { display: "+91- 7703043434", tel: "+917703043434" }, { display: "8052090807", tel: "+918052090807" } ] as const;
-export const HOSTS = ["Vijay Prakash", "Ranjeet Prasad"] as const;
+export const PHONES = [ { display: "+91- 6203173217", tel: "+916203173217" }, { display: "9973502484", tel: "+919973502484" } ] as const;
+export const HOSTS = ["Ganga Prasad Gupta", "Rajesh Gupta"] as const;
 export const FAMILY = "Gupta Family";
 export const LINKS = { registry: "#" } as const;
 export type RsvpField = "name" | "contact" | "email" | "attending" | "message";
