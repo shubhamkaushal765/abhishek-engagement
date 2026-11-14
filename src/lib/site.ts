@@ -35,7 +35,8 @@ export type GoogleFormConfig = {
   attendingLabels: { yes: string; no: string };
 };
 export const GOOGLE_FORM: GoogleFormConfig = {
-  actionUrl: "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse",
-  entries: { name: "entry.XXXX_NAME", contact: "entry.XXXX_CONTACT", email: "entry.XXXX_EMAIL", attending: "entry.XXXX_ATTENDING", message: "entry.XXXX_MESSAGE" },
+  // Google Apps Script web app bound to the RSVP Google Sheet (doPost reads these field names).
+  actionUrl: "https://script.google.com/macros/s/AKfycbxe5SjF36v1_rJn1wZM0aQRQkWESqAhIGLCQFrcAEkW5HsOU-55V33-Rm8XDpwS2uS4Sg/exec",
+  entries: { name: "name", contact: "contact", email: "email", attending: "attending", message: "message" },
   attendingLabels: { yes: "Accepts with pleasure", no: "Regretfully declines" },
 };
