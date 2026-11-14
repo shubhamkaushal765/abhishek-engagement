@@ -1,0 +1,318 @@
+.page {
+  background: var(--sand);
+  color: var(--burgundy);
+  text-align: center;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.fluid {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.abs {
+  position: absolute;
+}
+
+/* hero letter */
+.hero {
+  position: relative;
+  display: flex;
+  height: min(930px, 140vw);
+  justify-content: center;
+  overflow: hidden;
+}
+
+.letter {
+  position: relative;
+  width: min(660px, 100%);
+  container-type: inline-size;
+}
+
+.letterText {
+  position: absolute;
+  top: 43%;
+  left: 15%;
+  right: 15%;
+  color: var(--burgundy);
+}
+
+.letterScript {
+  font-size: calc(50 / 660 * 100cqw);
+  line-height: 1;
+}
+
+.letterNames {
+  font-size: calc(42 / 660 * 100cqw);
+  line-height: 1.1;
+  margin-top: 1cqw;
+}
+
+.letterSmall {
+  font-size: calc(15 / 660 * 100cqw);
+  letter-spacing: 0.15em;
+  color: var(--wine);
+  margin-top: 1cqw;
+}
+
+/* intro */
+.intro {
+  padding: 40px 16px 72px;
+}
+
+.composite {
+  position: relative;
+  width: min(600px, 90vw);
+  aspect-ratio: 600 / 610;
+  margin: 0 auto -12px;
+}
+
+.bow {
+  left: 14%;
+  top: 4%;
+  width: 72%;
+  height: auto;
+  z-index: 3;
+}
+
+.photoL {
+  left: 16.7%;
+  top: 41.8%;
+  width: 30%;
+  height: 36.9%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.frameL {
+  left: 10.5%;
+  top: 30.8%;
+  width: 42%;
+  height: 57.7%;
+  z-index: 2;
+}
+
+.photoR {
+  left: 58%;
+  top: 40.2%;
+  width: 30.3%;
+  height: 35.2%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.frameR {
+  left: 52.5%;
+  top: 29.8%;
+  width: 42.2%;
+  height: 56.2%;
+  z-index: 2;
+}
+
+.introText {
+  max-width: 970px;
+  margin: 0 auto;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(16px, 4.2vw, 25.33px);
+  text-transform: uppercase;
+  color: var(--wine);
+  line-height: 1.4;
+}
+
+.thanks {
+  margin-top: 20px;
+  font-style: italic;
+  font-size: clamp(15px, 3.6vw, 21.33px);
+  text-transform: uppercase;
+  color: var(--wine);
+}
+
+.withLove {
+  margin-top: 40px;
+  font-size: 21.33px;
+  letter-spacing: 6.4px;
+  color: var(--wine);
+}
+
+.signature {
+  font-size: clamp(40px, 9vw, 51px);
+  margin-top: 6px;
+}
+
+/* rsvp hero */
+.rsvp {
+  position: relative;
+  min-height: min(960px, 120vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.rsvpBg {
+  object-position: 30% center;
+}
+
+@media (min-width: 701px) {
+  .rsvpBg {
+    object-position: center;
+  }
+}
+
+.wreath {
+  position: relative;
+  display: block;
+  width: min(539px, 92vw);
+  container-type: inline-size;
+  color: var(--burgundy);
+  text-decoration: none;
+}
+
+.wreathText {
+  position: absolute;
+  top: 31%;
+  left: 20%;
+  right: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wreathScript {
+  font-size: calc(70.58 / 539 * 100cqw);
+  line-height: 1;
+}
+
+.wreathRule {
+  margin-top: 3cqw;
+}
+
+.wreathSmall {
+  margin-top: 3cqw;
+  font-size: calc(17.33 / 539 * 100cqw);
+  letter-spacing: 0.3em;
+}
+
+/* countdown */
+.count {
+  padding: 96px 16px;
+}
+
+.ornament {
+  display: block;
+  width: min(673px, 90vw);
+  height: auto;
+  margin: 0 auto;
+}
+
+.flip {
+  transform: scaleY(-1);
+}
+
+.countTitle {
+  font-size: clamp(40px, 8vw, 69.33px);
+  margin-top: 48px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 8px 0 48px;
+}
+
+.cdGroup {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cdCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(56px, 13vw, 130px);
+}
+
+.cdDigits {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1.15;
+  color: var(--burgundy);
+  font-variant-numeric: tabular-nums;
+}
+
+.cdColon {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1.15;
+  color: var(--burgundy);
+}
+
+.cdLabel {
+  margin-top: 6px;
+  font-size: clamp(10px, 2.6vw, 16px);
+  letter-spacing: 0.05em;
+  color: var(--wine);
+}
+
+/* details teaser */
+.teaser {
+  background: var(--ink);
+}
+
+.jewel {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 1536px;
+  margin: 0 auto;
+  container-type: inline-size;
+  color: var(--burgundy);
+  text-decoration: none;
+}
+
+.jewelImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.jewelText {
+  position: absolute;
+  left: 34.6%;
+  width: 27.1%;
+  top: 9.3%;
+  height: 32.2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.jewelScript {
+  font-size: max(18px, calc(70 / 1440 * 100cqw));
+  line-height: 1.05;
+}
+
+.jewelSmall {
+  margin-top: 1.2cqw;
+  font-size: max(6px, calc(14 / 1440 * 100cqw));
+  letter-spacing: 0.25em;
+}
+
+.jewelText .wreathRule {
+  width: max(24px, 4.2cqw);
+}
+
+.jewelText .jewelSmall {
+  letter-spacing: 0.12em;
+}
