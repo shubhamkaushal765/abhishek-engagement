@@ -376,8 +376,8 @@
 }
 
 .family {
-  font-size: clamp(24px, 6vw, 34.67px);
-  letter-spacing: 8.67px;
+  font-size: clamp(16px, 4vw, 24px);
+  letter-spacing: 4px;
   color: var(--sand);
   margin-top: 20px;
 }
@@ -415,6 +415,10 @@
   }
   .hosts {
     font-size: 21px;
+  }
+  .family {
+    font-size: 15px;
+    letter-spacing: 3px;
   }
   .venueName {
     font-size: 18px;

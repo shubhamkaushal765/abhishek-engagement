@@ -97,7 +97,7 @@ export default function EnvelopeLanding() {
       />
       <div className={styles.column}>
         <p className={`caps ${styles.kicker} ${styles.fade}`}>You’ve got mail from</p>
-        <h1 className={`script ${styles.names} ${styles.fade}`}>{COUPLE}</h1>
+        <h1 className={`names ${styles.names} ${styles.fade}`}>{COUPLE}</h1>
         <button type="button" className={styles.envelope} aria-label="Open invitation" onClick={open}>
           <Image
             src={envelopeClosed}
