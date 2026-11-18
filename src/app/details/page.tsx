@@ -206,7 +206,7 @@ export default function DetailsPage() {
           ))}
         </p>
         <p className={`caps ${styles.invitedBy}`}>Cordially invited by:</p>
-        <p className={`caps ${styles.hosts}`}>{HOSTS.join(" | ")}</p>
+        <p className={`caps ${styles.hosts}`}>{HOSTS.map((h) => (<span key={h} className={styles.host}>{h}</span>))}</p>
         <p className={`caps ${styles.family}`}>{FAMILY}</p>
         <GoBack className={styles.goBack} />
       </section>
