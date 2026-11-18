@@ -24,7 +24,7 @@ export const TIMELINE: TimelineItem[] = [
   { time: "5:45 PM", label: "Photos", icon: "camera" },
   { time: "8:00 PM", label: "Farewell", icon: "car" },
 ];
-export const PHONES = [ { display: "+91- 6203173217", tel: "+916203173217" }, { display: "9973502484", tel: "+919973502484" } ] as const;
+export const PHONES = [ { display: "+91 73523 50241", tel: "+917352350241" }, { display: "9110194946", tel: "+919110194946" } ] as const;
 export const HOSTS = ["Ganga Prasad Gupta", "Rajesh Gupta"] as const;
 export const FAMILY = "Gupta Family";
 export const LINKS = { registry: "#" } as const;
