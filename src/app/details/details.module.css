@@ -375,6 +375,14 @@
   margin-top: 20px;
 }
 
+.host {
+  display: block;
+}
+
+.host + .host {
+  margin-top: 6px;
+}
+
 .family {
   font-size: clamp(16px, 4vw, 24px);
   letter-spacing: 4px;
@@ -401,7 +409,49 @@
     font-size: 24px;
   }
   .timeline {
-    padding-top: 90px;
+    padding-top: 56px;
+  }
+  .timelineList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 12px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .timelineItem:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .timelineIcon {
+    max-width: 75%;
+  }
+  .timelineItem:last-child:nth-child(odd) .timelineIcon {
+    max-width: 45%;
+  }
+  .time {
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-top: 10px;
+  }
+  .timeLabel {
+    font-size: 20px;
+    margin-top: 4px;
+  }
+  .bowtie {
+    width: min(200px, 55vw);
+    margin: 16px 0 12px;
+  }
+  .rose {
+    width: 110px;
+  }
+  .horse {
+    width: min(180px, 50vw);
+  }
+  .gifts {
+    padding-bottom: 40px;
+  }
+  .other {
+    padding-top: 48px;
+    padding-bottom: 64px;
   }
   .questions {
     font-size: 19px;
@@ -423,5 +473,8 @@
   .venueName {
     font-size: 18px;
     letter-spacing: 3px;
+  }
+  .cameo {
+    width: min(225px, 40vw);
   }
 }
