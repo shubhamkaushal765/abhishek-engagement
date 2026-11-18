@@ -8,6 +8,12 @@
   --blush: #D9A7A0;
   --navy: #1F2A3A;
   --ink: #0F1015;
+  --fs-xs: 16px;
+  --fs-sm: 20px;
+  --fs-md: 25px;
+  --fs-lg: 31.25px;
+  --fs-xl: clamp(39px, 9vw, 48.8px);
+  --fs-2xl: clamp(48.8px, 6vw, 61px);
 }
 
 *,
@@ -83,13 +89,18 @@ a {
 }
 
 .pill {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 44px;
+  text-align: center;
   border: 1px solid currentColor;
   border-radius: 999px;
   font-family: var(--font-caps), serif;
-  font-size: 22.67px;
-  letter-spacing: 5.67px;
-  padding: 10px 32px;
+  font-size: var(--fs-sm);
+  letter-spacing: 4px;
+  padding: 10px 28px;
   text-transform: uppercase;
   text-decoration: none;
   transition: transform 0.3s;
@@ -97,6 +108,12 @@ a {
 
 .pill:hover {
   transform: scale(1.03);
+}
+
+.pillSolid {
+  background: var(--burgundy);
+  color: var(--cream);
+  border-color: var(--burgundy);
 }
 
 .srOnly {

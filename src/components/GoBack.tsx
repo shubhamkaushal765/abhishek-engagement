@@ -8,7 +8,11 @@ export default function GoBack({ className }: { className?: string }) {
       className={className}
       style={{
         fontFamily: "var(--font-caps), serif",
-        fontSize: 20,
+        fontSize: "var(--fs-sm)",
+        display: "inline-flex",
+        alignItems: "center",
+        minHeight: 44,
+        padding: "0 12px",
         fontWeight: 700,
         letterSpacing: 5,
         color: "#fff",
