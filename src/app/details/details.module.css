@@ -101,20 +101,28 @@
 }
 
 .timeline {
-  padding: 215px 16px 40px;
+  padding: 120px 16px 40px;
 }
 
 .timelineList {
-  margin-top: 56px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 56px 24px;
+  max-width: 1040px;
+  margin: 48px auto 0;
+}
+
+.timelineItem {
+  flex: 0 0 calc(25% - 18px);
+  min-width: 0;
 }
 
 .timelineIcon {
   height: auto;
-  max-width: 90vw;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -133,7 +141,7 @@
 }
 
 .venueSection {
-  padding: 72px 16px 64px;
+  padding: 48px 16px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,7 +180,7 @@
 .mapPin {
   width: 119px;
   height: auto;
-  margin: 48px 0 24px;
+  margin: 32px 0 16px;
 }
 
 .gallery {
@@ -255,16 +263,16 @@
 }
 
 .other {
-  padding: 64px 16px 96px;
+  padding: 48px 16px 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .bowtie {
-  width: min(300px, 70vw);
+  width: min(240px, 70vw);
   height: auto;
-  margin: 24px 0 20px;
+  margin: 16px 0 12px;
 }
 
 .subhead {
@@ -308,13 +316,13 @@
 }
 
 .rose {
-  width: 160px;
+  width: 120px;
   height: auto;
   margin-bottom: 0;
 }
 
 .horse {
-  width: min(250px, 70vw);
+  width: min(200px, 70vw);
   height: auto;
   margin-bottom: 8px;
 }
@@ -330,7 +338,7 @@
 
 .cameo {
   position: relative;
-  width: min(450px, 80vw);
+  width: min(320px, 80vw);
   container-type: inline-size;
   margin-bottom: 8px;
 }
@@ -410,6 +418,12 @@
   }
   .timeline {
     padding-top: 56px;
+  }
+  .venueSection {
+    padding: 72px 16px 64px;
+  }
+  .mapPin {
+    margin: 48px 0 24px;
   }
   .timelineList {
     display: grid;
