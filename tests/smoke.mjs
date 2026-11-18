@@ -29,7 +29,7 @@ const ROUTES = [
   { path: "", texts: ["tap envelope to open", "you’ve got mail from"] },
   { path: "invitation/", texts: ["getting", "countdown is on", "kindly", "with love"] },
   { path: "rsvp/", texts: ["accepts with pleasure", "regretfully declines", "submit"] },
-  { path: "details/", texts: ["our timeline", "guest arrival", "farewell", "gupta family", "venue location"] },
+  { path: "details/", texts: ["when & where", "our timeline", "guest arrival", "farewell", "gupta family", "kindly rsvp"] },
 ];
 
 const MIME = {
@@ -206,7 +206,107 @@ async function checkFlows(browser, origin) {
       await page.getByRole("link", { name: /go back/i }).first().click();
       await page.waitForURL(/\/abhishek-engagement\/invitation\/$/, { timeout: 6000 });
     });
+    await step("flow details", "Kindly RSVP link goes to /rsvp/", async () => {
+      await page.goto(url("details/"), { waitUntil: "load" });
+      await page.getByRole("link", { name: /kindly\s*rsvp/i }).first().click();
+      await page.waitForURL(/\/abhishek-engagement\/rsvp\/$/, { timeout: 6000 });
+    });
     await context.close();
+  }
+}
+
+async function textStyles(page) {
+  return page.evaluate(() => {
+    const out = [];
+    for (const el of document.querySelectorAll("main *")) {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) continue;
+      const cs = getComputedStyle(el);
+      if (cs.visibility !== "visible" || cs.display === "none") continue;
+      const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim() !== "");
+      if (!own) continue;
+      out.push({
+        size: cs.fontSize,
+        px: parseFloat(cs.fontSize),
+        family: cs.fontFamily.split(",")[0].replace(/["']/g, "").trim(),
+      });
+    }
+    return out;
+  });
+}
+
+async function checkLayout(browser, origin) {
+  for (const vp of VIEWPORTS) {
+    const ctx = `layout ${vp.name}`;
+    const open = async (p) => {
+      const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+      context.setDefaultTimeout(5000);
+      const page = await context.newPage();
+      await page.goto(origin + BASE + p, { waitUntil: "load" });
+      await page.evaluate(() => document.fonts.ready);
+      await page.waitForTimeout(1200);
+      return { context, page };
+    };
+
+    {
+      const { context, page } = await open("details/");
+      await step(ctx, "details distinct font sizes <= 7", async () => {
+        const sizes = new Set((await textStyles(page)).map((s) => s.size));
+        if (sizes.size > 7) throw new Error(`${sizes.size} distinct font sizes: ${[...sizes].join(", ")}`);
+      });
+      await step(ctx, "details img count <= 12", async () => {
+        const n = await page.locator("main img").count();
+        if (n > 12) throw new Error(`${n} images in main`);
+      });
+      await step(ctx, "details sandaha appears once", async () => {
+        const body = (await page.evaluate(() => document.body.innerText)).toLowerCase();
+        const n = body.split("sandaha").length - 1;
+        if (n !== 1) throw new Error(`"sandaha" appears ${n} times`);
+      });
+      await step(ctx, "details targets >= 44x44", async () => {
+        const small = await page.evaluate(() =>
+          [...document.querySelectorAll("main a, main button")]
+            .map((el) => {
+              const r = el.getBoundingClientRect();
+              return { text: (el.innerText || el.getAttribute("aria-label") || el.tagName).trim().slice(0, 30), w: r.width, h: r.height };
+            })
+            .filter((t) => t.w < 44 || t.h < 44),
+        );
+        if (small.length) {
+          throw new Error(`small targets: ${small.map((t) => `"${t.text}" ${Math.round(t.w)}x${Math.round(t.h)}`).join("; ")}`);
+        }
+      });
+      if (vp.width === 390) {
+        await step(ctx, "details height < 5 screens", async () => {
+          const h = await page.evaluate(() => document.documentElement.scrollHeight);
+          const screens = h / vp.height;
+          if (!(screens < 5)) throw new Error(`details is ${screens.toFixed(1)} screens tall`);
+        });
+      }
+      await context.close();
+    }
+
+    {
+      const { context, page } = await open("rsvp/");
+      await step(ctx, "rsvp GO BACK height >= 44", async () => {
+        const box = await page.getByRole("link", { name: /go back/i }).first().boundingBox();
+        if (!box || box.height < 44) throw new Error(`GO BACK height ${box ? Math.round(box.height) : "none"}`);
+      });
+      await context.close();
+    }
+
+    {
+      const { context, page } = await open("invitation/");
+      await step(ctx, "invitation min font size >= 11px", async () => {
+        const min = Math.min(...(await textStyles(page)).map((s) => s.px));
+        if (!(min >= 11)) throw new Error(`min font size ${min}px`);
+      });
+      await step(ctx, "invitation distinct families <= 4", async () => {
+        const fams = new Set((await textStyles(page)).map((s) => s.family));
+        if (fams.size > 4) throw new Error(`${fams.size} families: ${[...fams].join(", ")}`);
+      });
+      await context.close();
+    }
   }
 }
 
@@ -225,6 +325,7 @@ try {
     }
   }
   await checkFlows(browser, origin);
+  await checkLayout(browser, origin);
 } finally {
   await browser.close();
   server.close();

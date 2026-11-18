@@ -82,12 +82,6 @@ export default function InvitationPage() {
         <Image src={ornament} alt="" sizes="(max-width: 748px) 90vw, 673px" className={styles.ornament} />
         <h2 className={`script ${styles.countTitle}`}>The countdown is on</h2>
         <Countdown targetIso={EVENT.startIso} />
-        <Image
-          src={ornament}
-          alt=""
-          sizes="(max-width: 748px) 90vw, 673px"
-          className={`${styles.ornament} ${styles.flip}`}
-        />
       </section>
 
       <section className={styles.teaser}>

@@ -5,7 +5,6 @@ export const EVENT = {
   startIso: "2026-12-10T00:00:00+05:30",
   dateDots: "10.12.2026",
   dateLong: "December 10, 2026",
-  ceremony: "12:00 PM at Tree Garden And Resort Varanasi Ring Rd, Sandaha, Varanasi",
 } as const;
 export const VENUE = {
   name: "Tree Garden And Resort",
